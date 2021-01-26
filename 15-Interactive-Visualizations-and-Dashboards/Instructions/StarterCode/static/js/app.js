@@ -50,7 +50,7 @@ function panel(mData) {
 }
 
 function bar(sampData) {
-    var yLabel = sampData.otu_ids.slice(0, 10).reverse().map(x => `OTU ID: ${x}`);
+    var yLabel = sampData.otu_ids.slice(0, 10).reverse().map(x => `OTU_ID: ${x}`);
     var trace1 = {
         x: sampData.sample_values.slice(0, 10).reverse(),
         y: yLabel,
@@ -67,7 +67,8 @@ function bar(sampData) {
         yaxis: {
             title: "ID of Bacteria",
             tickangle: -40,
-        }
+        },
+        font: { color: "Black" }
     }
 
     var trace = [trace1];
@@ -94,7 +95,8 @@ function bubble(sampData) {
     var layout = {
         title: "Amount of Bacteria in Subjects Belly Button",
         xaxis: { title: "ID of Bacteria" },
-        yaxis: { title: "Amount of Bacteria" }
+        yaxis: { title: "Amount of Bacteria" },
+        font: { color: "Black" }
     }
 
     Plotly.newPlot('bubble', trace, layout);
