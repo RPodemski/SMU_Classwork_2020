@@ -144,18 +144,18 @@ function build(earthData, plateData) {
 }
 
 function markerOptions(feature) {
-    var depth = feature.geometry.coordinates[2];
+    var depthEarth = feature.geometry.coordinates[2];
 
     var dColor = "";
-    if (depth > 90) {
+    if (depthEarth > 90) {
         dColor = "#EE6055"
-    } else if (depth > 70) {
+    } else if (depthEarth > 70) {
         dColor = "#FF9B85"
-    } else if (depth > 50) {
+    } else if (depthEarth > 50) {
         dColor = "#FFD97D"
-    } else if (depth > 30) {
+    } else if (depthEarth > 30) {
         dColor = "#D5E880"
-    } else if (depth > 10) {
+    } else if (depthEarth > 10) {
         dColor = "#AAF683"
     } else {
         dColor = "#60D394"
