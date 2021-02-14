@@ -10,7 +10,6 @@ function createMap() {
         url: qURL,
         success: function(earthData) {
             // build(earthData);
-            // tried adding a nested ajax request but couldn 't get it to load 
             $.ajax({
                 type: "GET",
                 url: "SMU_Homework_2020/17-Mapping-Web-Test/Instructions/static/data/PB2002_boundaries.json",
