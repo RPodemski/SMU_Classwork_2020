@@ -4,23 +4,24 @@ $(document).ready(function() {
 
 function createMap() {
 
-    var url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson"
+    var qURL = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson"
 
     $.ajax({
         type: "GET",
-        url: url,
+        url: qURL,
         success: function(earthData) {
-            $.ajax({
-                type: "GET",
-                url: "/static/data/PB2002_boundaries.json",
-                success: function(plateData) {
-                    build(earthData, plateData);
-                },
-                error: function(XMLHttpRequest, textStatus, errorThrown) {
-                    alert("Status: " + textStatus);
-                    alert("Error: " + errorThrown);
-                }
-            });
+            build(earthData);
+            // $.ajax({
+            //     type: "GET",
+            //     url: "static\data\PB2002_boundaries.json",
+            //     success: function(plateData) {
+            //         build(earthData, plateData);
+            //     },
+            //     error: function(XMLHttpRequest, textStatus, errorThrown) {
+            //         alert("Status: " + textStatus);
+            //         alert("Error: " + errorThrown);
+            //     }
+            // });
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) {
             alert("Status: " + textStatus);
