@@ -11,17 +11,17 @@ function createMap() {
         url: qURL,
         success: function(earthData) {
             build(earthData);
-            // $.ajax({
-            //     type: "GET",
-            //     url: "static\data\PB2002_boundaries.json",
-            //     success: function(plateData) {
-            //         build(earthData, plateData);
-            //     },
-            //     error: function(XMLHttpRequest, textStatus, errorThrown) {
-            //         alert("Status: " + textStatus);
-            //         alert("Error: " + errorThrown);
-            //     }
-            // });
+            $.ajax({
+                type: "GET",
+                url: "SMU_Homework_2020\17-Mapping-Web\Instructions\static\data\PB2002_boundaries.json",
+                success: function(plateData) {
+                    build(earthData, plateData);
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    alert("Status: " + textStatus);
+                    alert("Error: " + errorThrown);
+                }
+            });
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) {
             alert("Status: " + textStatus);
@@ -30,7 +30,7 @@ function createMap() {
     });
 }
 
-function build(earthData, plateData) {
+function build(earthData) {
     var darkMode = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
         attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
         tileSize: 512,
@@ -73,15 +73,15 @@ function build(earthData, plateData) {
         circles.push(circle);
     });
 
-    var plates = L.geoJSON(plateData, {
-        color: "orange",
-        weight: 1
-    });
+    // var plates = L.geoJSON(plateData, {
+    //     color: "orange",
+    //     weight: 1
+    // });
 
 
     var markLayer = L.layerGroup(earthquakes);
     var markLayer2 = L.layerGroup(circles);
-    var plateLayer = L.layerGroup([plates]);
+    // var plateLayer = L.layerGroup([plates]);
 
     var baseMaps = {
         "Light Mode": lightMode,
@@ -91,12 +91,12 @@ function build(earthData, plateData) {
     var overlayMaps = {
         "Markers": markLayer,
         "Magnitude of Earthquake": markLayer2,
-        "Tectonic Plates": plateLayer
+        // "Tectonic Plates": plateLayer
     };
 
     L.control.layers(baseMaps, overlayMaps).addTo(myMap);
 
-    plates.addTo(myMap);
+    // plates.addTo(myMap);
     markLayer2.addTo(myMap);
 
 
