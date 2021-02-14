@@ -81,7 +81,7 @@ function build(earthData) {
 
     var markLayer = L.layerGroup(earthquakes);
     var markLayer2 = L.layerGroup(circles);
-    // var plateLayer = L.layerGroup([plates]);
+    var plateLayer = L.layerGroup([plates]);
 
     var baseMaps = {
         "Light Mode": lightMode,
