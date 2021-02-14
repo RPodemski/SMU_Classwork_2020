@@ -3,14 +3,13 @@ $(document).ready(function() {
 });
 
 function createMap() {
-
     var qURL = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson"
 
     $.ajax({
         type: "GET",
         url: qURL,
         success: function(earthData) {
-            build(earthData);
+            // build(earthData);
             $.ajax({
                 type: "GET",
                 url: "SMU_Homework_2020\17-Mapping-Web\Instructions\static\data\PB2002_boundaries.json",
@@ -30,7 +29,7 @@ function createMap() {
     });
 }
 
-function build(earthData) {
+function build(earthData, plateData) {
     var darkMode = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
         attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
         tileSize: 512,
