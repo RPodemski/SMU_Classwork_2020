@@ -73,10 +73,10 @@ function build(earthData) {
         circles.push(circle);
     });
 
-    // var plates = L.geoJSON(plateData, {
-    //     color: "orange",
-    //     weight: 1
-    // });
+    var plates = L.geoJSON(plateData, {
+        color: "orange",
+        weight: 1
+    });
 
 
     var markLayer = L.layerGroup(earthquakes);
@@ -91,12 +91,12 @@ function build(earthData) {
     var overlayMaps = {
         "Markers": markLayer,
         "Magnitude of Earthquake": markLayer2,
-        // "Tectonic Plates": plateLayer
+        "Tectonic Plates": plateLayer
     };
 
     L.control.layers(baseMaps, overlayMaps).addTo(myMap);
 
-    // plates.addTo(myMap);
+    plates.addTo(myMap);
     markLayer2.addTo(myMap);
 
 
